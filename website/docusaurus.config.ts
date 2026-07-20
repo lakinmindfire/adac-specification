@@ -96,6 +96,11 @@ const config: Config = {
           label: 'Documentation',
         },
         {
+          to: '/getting-started',
+          label: 'Getting Started',
+          position: 'left',
+        },
+        {
           href: 'https://github.com/lakinmindfire/adac-specification',
           label: 'GitHub',
           position: 'right',
