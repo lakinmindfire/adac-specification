@@ -101,7 +101,7 @@ export function ScrollytellingComponent() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: false, amount: 0.5 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.3 }}
           />
 
           {/* Content Container */}
@@ -120,14 +120,14 @@ export function ScrollytellingComponent() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: false, amount: 0.5 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.4 }}
           >
             {/* Left Column - Content */}
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
+              initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: false, amount: 0.5 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
             >
               {/* Step Counter */}
               <motion.div
@@ -142,13 +142,10 @@ export function ScrollytellingComponent() {
                   fontWeight: '600',
                   marginBottom: '1rem',
                 }}
-                animate={{
-                  scale: [1, 1.05, 1],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                }}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: false, amount: 0.5 }}
+                transition={{ duration: 0.3, delay: 0.15 }}
               >
                 Step {idx + 1} of {scrollySteps.length}
               </motion.div>
@@ -162,10 +159,10 @@ export function ScrollytellingComponent() {
                   color: 'var(--text-primary)',
                   lineHeight: '1.2',
                 }}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false, amount: 0.5 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
+                transition={{ duration: 0.3, delay: 0.15 }}
               >
                 {step.title}
               </motion.h2>
@@ -178,10 +175,10 @@ export function ScrollytellingComponent() {
                   margin: '1rem 0 2rem 0',
                   lineHeight: '1.6',
                 }}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false, amount: 0.5 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
+                transition={{ duration: 0.3, delay: 0.2 }}
               >
                 {step.description}
               </motion.p>
@@ -191,7 +188,7 @@ export function ScrollytellingComponent() {
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: '1rem',
+                  gap: '0.75rem',
                 }}
               >
                 {step.details.map((detail, i) => (
@@ -202,10 +199,10 @@ export function ScrollytellingComponent() {
                       alignItems: 'flex-start',
                       gap: '1rem',
                     }}
-                    initial={{ opacity: 0, x: -20 }}
+                    initial={{ opacity: 0, x: -15 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: false, amount: 0.5 }}
-                    transition={{ duration: 0.5, delay: 0.5 + i * 0.1 }}
+                    transition={{ duration: 0.25, delay: 0.25 + i * 0.05 }}
                   >
                     <div
                       style={{
@@ -249,10 +246,10 @@ export function ScrollytellingComponent() {
                 justifyContent: 'center',
               }}
               className="hidden lg:flex"
-              initial={{ opacity: 0, x: 50 }}
+              initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: false, amount: 0.5 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
             >
               <motion.div
                 style={{
@@ -277,11 +274,11 @@ export function ScrollytellingComponent() {
                     background: `radial-gradient(circle, ${step.color}20, transparent)`,
                   }}
                   animate={{
-                    scale: [1, 1.2, 1],
-                    opacity: [0.5, 1, 0.5],
+                    scale: [1, 1.15, 1],
+                    opacity: [0.5, 0.8, 0.5],
                   }}
                   transition={{
-                    duration: 3,
+                    duration: 2.5,
                     repeat: Infinity,
                     ease: 'easeInOut',
                   }}
@@ -290,11 +287,10 @@ export function ScrollytellingComponent() {
                 {/* Icon */}
                 <motion.div
                   animate={{
-                    y: [0, -20, 0],
-                    rotate: [0, 10, 0],
+                    y: [0, -15, 0],
                   }}
                   transition={{
-                    duration: 3,
+                    duration: 2.5,
                     repeat: Infinity,
                     ease: 'easeInOut',
                   }}
@@ -319,6 +315,10 @@ export function ScrollytellingComponent() {
               display: 'flex',
               gap: '0.5rem',
             }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: false, amount: 0.5 }}
+            transition={{ duration: 0.3, delay: 0.4 }}
           >
             {scrollySteps.map((_, i) => (
               <motion.div
@@ -329,11 +329,9 @@ export function ScrollytellingComponent() {
                   borderRadius: '9999px',
                   background: i === idx ? step.color : 'var(--card-border)',
                 }}
-                animate={{
-                  scale: i === idx ? [1, 1.2, 1] : 1,
-                }}
+                animate={i === idx ? { scale: [1, 1.15, 1] } : {}}
                 transition={{
-                  duration: 2,
+                  duration: 1.5,
                   repeat: Infinity,
                 }}
               />
@@ -353,7 +351,7 @@ export function ScrollytellingComponent() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.3 }}
       >
         <h3 style={{ fontSize: '2rem', fontWeight: '700', marginBottom: '1rem' }}>
           Ready to Transform Your Architecture?
