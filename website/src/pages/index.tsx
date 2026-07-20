@@ -9,6 +9,12 @@ import { ShineBorder } from '../components/ui/ShineBorder';
 import { ArrowRight, Zap, Target, Puzzle, FileCode2, ShieldCheck, Cloud } from 'lucide-react';
 import { ComparisonComponent } from '../components/ComparisonComponent';
 import { TimelineComponent } from '../components/TimelineComponent';
+import { ArchitectureDiagramComponent } from '../components/ArchitectureDiagramComponent';
+import { FeatureCarouselComponent } from '../components/FeatureCarouselComponent';
+import { ComparisonSliderComponent } from '../components/ComparisonSliderComponent';
+import { CLICommandShowcaseComponent } from '../components/CLICommandShowcaseComponent';
+import { ScrollytellingComponent } from '../components/ScrollytellingComponent';
+import { RealStatsComponent } from '../components/RealStatsComponent';
 
 /* ─── Standard Github SVG Icon ──────────────────────────────── */
 function GithubIcon({ size = 18 }: { size?: number }) {
@@ -371,9 +377,199 @@ export default function Home() {
       <div style={{ position: 'relative', zIndex: 1 }}>
         <main className="w-full">
           <HeroSection />
+          
+          {/* Feature Carousel Section */}
+          <section
+            style={{
+              paddingTop: '4rem',
+              paddingBottom: '4rem',
+              paddingLeft: '1.25rem',
+              paddingRight: '1.25rem',
+              background: 'color-mix(in oklab, hsl(var(--primary)) 3%, transparent)',
+              borderTop: '1px solid var(--card-border)',
+              borderBottom: '1px solid var(--card-border)',
+            }}
+          >
+            <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
+              <header style={{ textAlign: 'center', maxWidth: '868px', margin: '0 auto 3.5rem auto' }}>
+                <SectionCapsule text="Core Features" />
+                <h2
+                  className="font-semibold tracking-tight text-3xl sm:text-4xl lg:text-5xl leading-[1.08]"
+                  style={{ color: 'var(--foreground)' }}
+                >
+                  What Makes ADAC <span style={{ color: 'hsl(var(--primary))' }}>Unique</span>
+                </h2>
+                <p
+                  style={{
+                    fontSize: '1.125rem',
+                    lineHeight: '1.75rem',
+                    color: 'var(--muted-foreground)',
+                    maxWidth: '600px',
+                    margin: '1rem auto 0',
+                  }}
+                >
+                  Explore the key capabilities that make ADAC the ideal choice for architecture-as-code
+                </p>
+              </header>
+              <FeatureCarouselComponent />
+            </div>
+          </section>
+          
+          {/* Architecture Diagram Pipeline */}
+          <section
+            style={{
+              paddingTop: '4rem',
+              paddingBottom: '4rem',
+              paddingLeft: '1.25rem',
+              paddingRight: '1.25rem',
+            }}
+          >
+            <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
+              <header style={{ textAlign: 'center', maxWidth: '868px', margin: '0 auto 3.5rem auto' }}>
+                <SectionCapsule text="How It Works" />
+                <h2
+                  className="font-semibold tracking-tight text-3xl sm:text-4xl lg:text-5xl leading-[1.08]"
+                  style={{ color: 'var(--foreground)' }}
+                >
+                  ADAC <span style={{ color: 'hsl(var(--primary))' }}>Processing Pipeline</span>
+                </h2>
+                <p
+                  style={{
+                    fontSize: '1.125rem',
+                    lineHeight: '1.75rem',
+                    color: 'var(--muted-foreground)',
+                    maxWidth: '600px',
+                    margin: '1rem auto 0',
+                  }}
+                >
+                  From YAML input to beautiful diagrams in seconds. Click each step to learn more.
+                </p>
+              </header>
+              <ArchitectureDiagramComponent />
+            </div>
+          </section>
+
+          {/* CLI Command Showcase */}
+          <section
+            style={{
+              paddingTop: '4rem',
+              paddingBottom: '4rem',
+              paddingLeft: '1.25rem',
+              paddingRight: '1.25rem',
+              background: 'color-mix(in oklab, hsl(var(--primary)) 3%, transparent)',
+              borderTop: '1px solid var(--card-border)',
+              borderBottom: '1px solid var(--card-border)',
+            }}
+          >
+            <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
+              <header style={{ textAlign: 'center', maxWidth: '868px', margin: '0 auto 3.5rem auto' }}>
+                <SectionCapsule text="Command Line" />
+                <h2
+                  className="font-semibold tracking-tight text-3xl sm:text-4xl lg:text-5xl leading-[1.08]"
+                  style={{ color: 'var(--foreground)' }}
+                >
+                  Powerful <span style={{ color: 'hsl(var(--primary))' }}>CLI Tools</span>
+                </h2>
+                <p
+                  style={{
+                    fontSize: '1.125rem',
+                    lineHeight: '1.75rem',
+                    color: 'var(--muted-foreground)',
+                    maxWidth: '600px',
+                    margin: '1rem auto 0',
+                  }}
+                >
+                  Complete control from the terminal. Integrate ADAC into your workflow.
+                </p>
+              </header>
+              <CLICommandShowcaseComponent />
+            </div>
+          </section>
+
+          {/* Scrollytelling Section */}
+          <section style={{ paddingTop: '4rem', paddingBottom: '4rem' }}>
+            <ScrollytellingComponent />
+          </section>
+
+          {/* Real Stats */}
+          <section
+            style={{
+              paddingTop: '4rem',
+              paddingBottom: '4rem',
+              paddingLeft: '1.25rem',
+              paddingRight: '1.25rem',
+              background: 'color-mix(in oklab, hsl(var(--primary)) 3%, transparent)',
+              borderTop: '1px solid var(--card-border)',
+              borderBottom: '1px solid var(--card-border)',
+            }}
+          >
+            <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
+              <RealStatsComponent />
+            </div>
+          </section>
+
+          {/* Comparison Slider */}
+          <section
+            style={{
+              paddingTop: '4rem',
+              paddingBottom: '4rem',
+              paddingLeft: '1.25rem',
+              paddingRight: '1.25rem',
+            }}
+          >
+            <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
+              <header style={{ textAlign: 'center', maxWidth: '868px', margin: '0 auto 3.5rem auto' }}>
+                <SectionCapsule text="Comparison" />
+                <h2
+                  className="font-semibold tracking-tight text-3xl sm:text-4xl lg:text-5xl leading-[1.08]"
+                  style={{ color: 'var(--foreground)' }}
+                >
+                  ADAC vs <span style={{ color: 'hsl(var(--primary))' }}>Traditional Approach</span>
+                </h2>
+                <p
+                  style={{
+                    fontSize: '1.125rem',
+                    lineHeight: '1.75rem',
+                    color: 'var(--muted-foreground)',
+                    maxWidth: '600px',
+                    margin: '1rem auto 0',
+                  }}
+                >
+                  See how ADAC simplifies your architecture workflow
+                </p>
+              </header>
+              <ComparisonSliderComponent />
+            </div>
+          </section>
+
+          {/* Original Features Section */}
           <FeaturesSection />
-          <ComparisonComponent />
-          <TimelineComponent />
+          
+          {/* Timeline */}
+          <section
+            style={{
+              paddingTop: '4rem',
+              paddingBottom: '4rem',
+              paddingLeft: '1.25rem',
+              paddingRight: '1.25rem',
+              background: 'color-mix(in oklab, hsl(var(--primary)) 3%, transparent)',
+              borderTop: '1px solid var(--card-border)',
+            }}
+          >
+            <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
+              <header style={{ textAlign: 'center', maxWidth: '868px', margin: '0 auto 3.5rem auto' }}>
+                <SectionCapsule text="Ecosystem" />
+                <h2
+                  className="font-semibold tracking-tight text-3xl sm:text-4xl lg:text-5xl leading-[1.08]"
+                  style={{ color: 'var(--foreground)' }}
+                >
+                  Growing <span style={{ color: 'hsl(var(--primary))' }}>Ecosystem</span>
+                </h2>
+              </header>
+              <TimelineComponent />
+            </div>
+          </section>
+          
           <CtaSection />
         </main>
         <HomepageFooter />
