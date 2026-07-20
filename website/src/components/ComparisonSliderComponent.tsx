@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
+import { Check, X } from 'lucide-react';
 
 interface ComparisonItem {
   feature: string;
   traditional: string;
   adac: string;
+  traditionalBenefit: boolean;
+  adacBenefit: boolean;
 }
 
 const comparisonData: ComparisonItem[] = [
@@ -13,37 +15,62 @@ const comparisonData: ComparisonItem[] = [
     feature: 'Diagram Creation',
     traditional: 'Manual drawing tools, time-consuming',
     adac: 'Automatic generation from YAML',
+    traditionalBenefit: false,
+    adacBenefit: true,
   },
   {
     feature: 'Compliance Checking',
     traditional: 'Manual review, error-prone',
     adac: 'Automated validation against frameworks',
+    traditionalBenefit: false,
+    adacBenefit: true,
   },
   {
     feature: 'Cost Analysis',
     traditional: 'Spreadsheet calculations',
     adac: 'Real-time cost estimation and optimization',
+    traditionalBenefit: false,
+    adacBenefit: true,
   },
   {
     feature: 'Multi-Cloud Support',
     traditional: 'Separate tools per cloud',
     adac: 'Single tool for all cloud providers',
+    traditionalBenefit: false,
+    adacBenefit: true,
   },
   {
     feature: 'Documentation',
     traditional: 'Manual documentation maintenance',
     adac: 'Auto-updated from source YAML',
+    traditionalBenefit: false,
+    adacBenefit: true,
   },
   {
     feature: 'Version Control',
     traditional: 'Difficult to track changes',
     adac: 'Full Git integration, trackable changes',
+    traditionalBenefit: false,
+    adacBenefit: true,
+  },
+  {
+    feature: 'Setup Time',
+    traditional: '2-3 weeks for infrastructure',
+    adac: 'Days with reusable components',
+    traditionalBenefit: false,
+    adacBenefit: true,
+  },
+  {
+    feature: 'Team Collaboration',
+    traditional: 'Communication overhead',
+    adac: 'Unified source of truth',
+    traditionalBenefit: false,
+    adacBenefit: true,
   },
 ];
 
 export function ComparisonSliderComponent() {
   const [sliderPosition, setSliderPosition] = useState(50);
-  const [expandedRow, setExpandedRow] = useState<string | null>(null);
 
   const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSliderPosition(Number(e.target.value));
@@ -213,159 +240,238 @@ export function ComparisonSliderComponent() {
 
       {/* Comparison Table */}
       <motion.div
-        style={{ display: 'grid', gap: '1rem' }}
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-100px' }}
+        style={{
+          borderRadius: '12px',
+          background: 'var(--card-background)',
+          border: '2px solid var(--card-border)',
+          overflow: 'hidden',
+        }}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
       >
+        {/* Table Header */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            background: 'color-mix(in oklab, hsl(var(--primary)) 8%, transparent)',
+            borderBottom: '2px solid var(--card-border)',
+          }}
+          className="hidden sm:grid"
+        >
+          {/* Feature Column */}
+          <motion.div
+            style={{
+              padding: '1.5rem',
+              fontWeight: '700',
+              fontSize: '0.875rem',
+              textTransform: 'uppercase',
+              letterSpacing: '0.05em',
+              color: 'var(--text-primary)',
+              borderRight: '1px solid var(--card-border)',
+            }}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+          >
+            Feature
+          </motion.div>
+
+          {/* Traditional Column */}
+          <motion.div
+            style={{
+              padding: '1.5rem',
+              fontWeight: '700',
+              fontSize: '0.875rem',
+              textTransform: 'uppercase',
+              letterSpacing: '0.05em',
+              color: 'var(--text-primary)',
+              borderRight: '1px solid var(--card-border)',
+              textAlign: 'center',
+            }}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.15 }}
+          >
+            Traditional
+          </motion.div>
+
+          {/* ADAC Column */}
+          <motion.div
+            style={{
+              padding: '1.5rem',
+              fontWeight: '700',
+              fontSize: '0.875rem',
+              textTransform: 'uppercase',
+              letterSpacing: '0.05em',
+              color: 'var(--text-primary)',
+              textAlign: 'center',
+            }}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
+            ADAC
+          </motion.div>
+        </div>
+
+        {/* Table Rows */}
         {comparisonData.map((item, idx) => (
           <motion.div
             key={idx}
-            variants={itemVariants}
-            onClick={() => setExpandedRow(expandedRow === item.feature ? null : item.feature)}
             style={{
-              borderRadius: '12px',
-              background: 'var(--card-background)',
-              border: '2px solid var(--card-border)',
-              overflow: 'hidden',
-              cursor: 'pointer',
+              display: 'grid',
+              gridTemplateColumns: 'repeat(3, 1fr)',
+              borderBottom: idx < comparisonData.length - 1 ? '1px solid var(--card-border)' : 'none',
               transition: 'all 0.3s ease',
             }}
+            className="hidden sm:grid"
             whileHover={{
-              borderColor: 'var(--primary)',
-              boxShadow: '0 0 20px var(--primary)20',
+              background: 'color-mix(in oklab, hsl(var(--primary)) 3%, transparent)',
             }}
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 + idx * 0.05 }}
           >
-            {/* Header */}
+            {/* Feature Cell */}
             <div
               style={{
                 padding: '1.5rem',
+                fontWeight: '600',
+                color: 'var(--text-primary)',
+                borderRight: '1px solid var(--card-border)',
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'space-between',
-                gap: '1rem',
               }}
             >
-              <div style={{ flex: 1 }}>
-                <h4 style={{ margin: 0, fontWeight: '600', fontSize: '1rem' }}>
-                  {item.feature}
-                </h4>
-              </div>
-              <motion.div
-                animate={{
-                  rotate: expandedRow === item.feature ? 180 : 0,
-                }}
-                transition={{ duration: 0.3 }}
-              >
-                <ChevronDown size={20} />
-              </motion.div>
+              {item.feature}
             </div>
 
-            {/* Expanded Content */}
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{
-                height: expandedRow === item.feature ? 'auto' : 0,
-                opacity: expandedRow === item.feature ? 1 : 0,
-              }}
-              transition={{ duration: 0.3 }}
+            {/* Traditional Cell */}
+            <div
               style={{
-                overflow: 'hidden',
-                borderTop: '1px solid var(--card-border)',
+                padding: '1.5rem',
+                color: 'var(--text-secondary)',
+                borderRight: '1px solid var(--card-border)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.75rem',
               }}
             >
               <div
                 style={{
-                  padding: '1.5rem',
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-                  gap: '1rem',
+                  flex: '0 0 20px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
                 }}
               >
-                {/* Traditional Column */}
+                <X size={18} style={{ color: '#ef4444' }} />
+              </div>
+              <span style={{ fontSize: '0.875rem' }}>{item.traditional}</span>
+            </div>
+
+            {/* ADAC Cell */}
+            <div
+              style={{
+                padding: '1.5rem',
+                color: 'var(--text-secondary)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.75rem',
+              }}
+            >
+              <div
+                style={{
+                  flex: '0 0 20px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <Check size={18} style={{ color: '#10b981' }} />
+              </div>
+              <span style={{ fontSize: '0.875rem' }}>{item.adac}</span>
+            </div>
+          </motion.div>
+        ))}
+
+        {/* Mobile View - Stack Cards */}
+        <div style={{ display: 'none' }} className="sm:hidden">
+          {comparisonData.map((item, idx) => (
+            <motion.div
+              key={idx}
+              style={{
+                padding: '1.5rem',
+                borderBottom: idx < comparisonData.length - 1 ? '1px solid var(--card-border)' : 'none',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '1rem',
+              }}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 + idx * 0.05 }}
+            >
+              {/* Feature Title */}
+              <h4 style={{ margin: 0, fontWeight: '700', fontSize: '1rem', color: 'var(--text-primary)' }}>
+                {item.feature}
+              </h4>
+
+              {/* Traditional */}
+              <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
+                <div
+                  style={{
+                    flex: '0 0 24px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginTop: '2px',
+                  }}
+                >
+                  <X size={18} style={{ color: '#ef4444' }} />
+                </div>
                 <div>
-                  <div
-                    style={{
-                      fontSize: '0.875rem',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.05em',
-                      color: 'var(--muted-foreground)',
-                      marginBottom: '0.5rem',
-                      fontWeight: '600',
-                    }}
-                  >
+                  <div style={{ fontSize: '0.75rem', fontWeight: '600', color: 'var(--muted-foreground)', marginBottom: '0.25rem' }}>
                     Traditional
                   </div>
-                  <motion.div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'flex-start',
-                      gap: '0.75rem',
-                    }}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.1 }}
-                  >
-                    <div
-                      style={{
-                        color: '#ef4444',
-                        fontWeight: '700',
-                        flex: '0 0 24px',
-                        marginTop: '2px',
-                      }}
-                    >
-                      ✗
-                    </div>
-                    <p style={{ margin: 0, fontSize: '0.875rem', lineHeight: '1.5' }}>
-                      {item.traditional}
-                    </p>
-                  </motion.div>
+                  <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
+                    {item.traditional}
+                  </p>
                 </div>
+              </div>
 
-                {/* ADAC Column */}
+              {/* ADAC */}
+              <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
+                <div
+                  style={{
+                    flex: '0 0 24px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginTop: '2px',
+                  }}
+                >
+                  <Check size={18} style={{ color: '#10b981' }} />
+                </div>
                 <div>
-                  <div
-                    style={{
-                      fontSize: '0.875rem',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.05em',
-                      color: 'var(--muted-foreground)',
-                      marginBottom: '0.5rem',
-                      fontWeight: '600',
-                    }}
-                  >
+                  <div style={{ fontSize: '0.75rem', fontWeight: '600', color: 'var(--muted-foreground)', marginBottom: '0.25rem' }}>
                     ADAC
                   </div>
-                  <motion.div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'flex-start',
-                      gap: '0.75rem',
-                    }}
-                    initial={{ opacity: 0, x: 10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.15 }}
-                  >
-                    <div
-                      style={{
-                        color: '#10b981',
-                        fontWeight: '700',
-                        flex: '0 0 24px',
-                        marginTop: '2px',
-                      }}
-                    >
-                      ✓
-                    </div>
-                    <p style={{ margin: 0, fontSize: '0.875rem', lineHeight: '1.5' }}>
-                      {item.adac}
-                    </p>
-                  </motion.div>
+                  <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
+                    {item.adac}
+                  </p>
                 </div>
               </div>
             </motion.div>
-          </motion.div>
-        ))}
+          ))}
+        </div>
       </motion.div>
 
       {/* Summary Box */}
@@ -384,7 +490,7 @@ export function ComparisonSliderComponent() {
         transition={{ delay: 0.5 }}
       >
         <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
-          💡 <strong>Pro Tip:</strong> Drag the slider above to compare, then click any row to see detailed differences
+          💡 <strong>Quick Look:</strong> Drag the slider above to compare, view complete comparison table below
         </p>
       </motion.div>
     </div>
