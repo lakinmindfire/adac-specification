@@ -11,14 +11,14 @@
  */
 
 :root {
-  /* Primary palette — Red, matching Ignix UI & GPX reference sites */
-  --ifm-color-primary: #ff0000;
-  --ifm-color-primary-dark: #cc0511;
-  --ifm-color-primary-darker: #b70510;
-  --ifm-color-primary-darkest: #99040d;
-  --ifm-color-primary-light: #f01622;
-  --ifm-color-primary-lighter: #f33a45;
-  --ifm-color-primary-lightest: #f7777f;
+  /* Primary palette — Modern Crimson-Rose, matching Ignix UI & GPX reference sites */
+  --ifm-color-primary: #e11d48;
+  --ifm-color-primary-dark: #be123c;
+  --ifm-color-primary-darker: #9f1239;
+  --ifm-color-primary-darkest: #4c0519;
+  --ifm-color-primary-light: #f43f5e;
+  --ifm-color-primary-lighter: #fb7185;
+  --ifm-color-primary-lightest: #fecdd3;
   --ifm-background-color: #ffffff;
   --ifm-code-font-size: 95%;
   --ifm-paragraph-margin-bottom: 0rem;
@@ -33,13 +33,13 @@
   --popover: var(--ifm-card-background-color, #ffffff);
   --popover-foreground: var(--ifm-font-color-base, #1c1e21);
 
-  --primary: 0 100% 50%;
-  --primary-light: 2 83% 51%;
-  --primary-dark: 357 95% 41%;
-  --primary-darker: 357 93% 37%;
-  --primary-darkest: 358 92% 31%;
-  --primary-lighter: 358 86% 58%;
-  --primary-lightest: 357 88% 72%;
+  --primary: 348 83% 50%;
+  --primary-light: 348 89% 60%;
+  --primary-dark: 348 83% 41%;
+  --primary-darker: 348 80% 35%;
+  --primary-darkest: 348 81% 16%;
+  --primary-lighter: 348 95% 71%;
+  --primary-lightest: 348 100% 88%;
 
   --primary-foreground: #ffffff;
   --secondary: var(--ifm-color-emphasis-200, #f5f5f5);
@@ -79,13 +79,13 @@
 /* Dark mode — pure black background matching reference sites */
 [data-theme='dark'] {
   --ifm-background-color: #000000;
-  --ifm-color-primary: hsl(0 100% 50%);
-  --ifm-color-primary-dark: hsl(357 73% 55%);
-  --ifm-color-primary-darker: hsl(357 63% 48%);
-  --ifm-color-primary-darkest: hsl(357 56% 40%);
-  --ifm-color-primary-light: hsl(0 100% 67%);
-  --ifm-color-primary-lighter: hsl(0 100% 75%);
-  --ifm-color-primary-lightest: hsl(0 100% 84%);
+  --ifm-color-primary: hsl(348 83% 50%);
+  --ifm-color-primary-dark: hsl(348 83% 41%);
+  --ifm-color-primary-darker: hsl(348 80% 35%);
+  --ifm-color-primary-darkest: hsl(348 81% 16%);
+  --ifm-color-primary-light: hsl(348 89% 60%);
+  --ifm-color-primary-lighter: hsl(348 95% 71%);
+  --ifm-color-primary-lightest: hsl(348 100% 88%);
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 
   --radius: 0.625rem;
@@ -187,10 +187,10 @@
 
 @keyframes glow {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(255, 0, 0, 0.1);
+    box-shadow: 0 0 20px rgba(225, 29, 72, 0.1);
   }
   50% {
-    box-shadow: 0 0 40px rgba(255, 0, 0, 0.2);
+    box-shadow: 0 0 40px rgba(225, 29, 72, 0.2);
   }
 }
 
@@ -234,7 +234,7 @@ pre {
 
 pre:hover {
   border-color: hsl(var(--primary));
-  box-shadow: 0 0 20px rgba(255, 0, 0, 0.1);
+  box-shadow: 0 0 20px rgba(225, 29, 72, 0.15);
 }
 
 /* Link enhancements */
@@ -295,4 +295,42 @@ a:focus,
   h3 {
     font-size: 1.25rem;
   }
+}
+
+
+/* Floating glassmorphic navbar styling */
+.navbar {
+  background-color: color-mix(in oklab, var(--background) 70%, transparent) !important;
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid color-mix(in oklab, var(--border) 40%, transparent) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+}
+
+[data-theme='dark'] .navbar {
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Background utilities for visual depth */
+.grid-bg {
+  position: relative;
+  background-image: radial-gradient(color-mix(in oklab, hsl(var(--primary)) 6%, transparent) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.glow-blob {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in oklab, hsl(var(--primary)) 12%, transparent) 0%, transparent 70%);
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.8;
+}
+
+/* Selects the Docusaurus skip link container by its functional attributes */
+div[role="region"][aria-label="Skip to main content"],
+a[class^="skipToContent_"] {
+  display: none !important;
 }

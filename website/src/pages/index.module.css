@@ -21,3 +21,10 @@
   align-items: center;
   justify-content: center;
 }
+
+
+/* Selects the Docusaurus skip link container by its functional attributes */
+div[role="region"][aria-label="Skip to main content"],
+a[class^="skipToContent_"] {
+  display: none !important;
+}

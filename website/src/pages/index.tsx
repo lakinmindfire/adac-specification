@@ -63,8 +63,10 @@ function SectionCapsule({ text }: { text: string }) {
 function HeroSection() {
 
   return (
-    <section aria-label="Hero" className="relative overflow-hidden">
-      <header className="flex items-center justify-center sm:py-24 py-16">
+    <section aria-label="Hero" className="relative overflow-hidden grid-bg">
+      <div className="glow-blob -top-48 -left-48" />
+      <div className="glow-blob -bottom-48 -right-48" />
+      <header className="flex items-center justify-center sm:py-24 py-16 relative z-10">
         <div className="w-full relative z-10">
           <div className="max-w-7xl mx-auto px-6 text-center">
             <motion.div
@@ -226,14 +228,10 @@ function FeaturesSection() {
           {features.map((feature, idx) => (
             <Card
               key={idx}
-              variant="default"
+              variant="premium"
               interactive="lift"
               animation="fadeIn"
               className="h-full"
-              style={{
-                background: 'var(--card)',
-                borderColor: 'var(--border)',
-              }}
             >
               <CardHeader>
                 <motion.div

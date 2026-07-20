@@ -195,7 +195,7 @@ export function ComparisonSliderComponent() {
             zIndex: 10,
           }}
           whileHover={{ width: '8px' }}
-          transition={{ width: 0.2 }}
+          transition={{ duration: 0.2 }}
         >
           <motion.div
             style={{

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { FileCode2, CheckCircle, Zap, Layers, Image as ImageIcon } from 'lucide-react';
 
 interface PipelineStep {
@@ -51,7 +51,7 @@ const pipelineSteps: PipelineStep[] = [
 export function ArchitectureDiagramComponent() {
   const [activeStep, setActiveStep] = useState<string | null>(null);
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -62,7 +62,7 @@ export function ArchitectureDiagramComponent() {
     },
   };
 
-  const stepVariants = {
+  const stepVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
@@ -71,7 +71,7 @@ export function ArchitectureDiagramComponent() {
     },
   };
 
-  const arrowVariants = {
+  const arrowVariants: Variants = {
     hidden: { pathLength: 0, opacity: 0 },
     visible: {
       pathLength: 1,
@@ -84,16 +84,6 @@ export function ArchitectureDiagramComponent() {
     <div style={{ width: '100%', maxWidth: '1000px', margin: '0 auto' }}>
       {/* Desktop View - Horizontal Flow */}
       <motion.div
-        style={{
-          display: 'none',
-          '@media (min-width: 768px)': {
-            display: 'flex',
-            gap: '1rem',
-            alignItems: 'stretch',
-            overflow: 'auto',
-            paddingBottom: '1rem',
-          },
-        }}
         className="hidden md:flex gap-4 items-stretch overflow-auto pb-4"
         variants={containerVariants}
         initial="hidden"
