@@ -7,11 +7,8 @@ import { Button } from '../components/ui/Button';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '../components/ui/Card';
 import { ShineBorder } from '../components/ui/ShineBorder';
 import { ArrowRight, Zap, Target, Puzzle, FileCode2, ShieldCheck, Cloud } from 'lucide-react';
-import { SpecDemoComponent } from '../components/SpecDemoComponent';
 import { ComparisonComponent } from '../components/ComparisonComponent';
 import { TimelineComponent } from '../components/TimelineComponent';
-import { StatsComponent } from '../components/StatsComponent';
-import { TestimonialComponent } from '../components/TestimonialComponent';
 
 /* ─── Standard Github SVG Icon ──────────────────────────────── */
 function GithubIcon({ size = 18 }: { size?: number }) {
@@ -375,13 +372,7 @@ export default function Home() {
         <main className="w-full">
           <HeroSection />
           <FeaturesSection />
-          <SpecDemoComponent 
-            title="See ADAC in Action"
-            description="Explore a real-world example of an ADAC specification for an e-commerce platform. Switch between YAML and preview tabs to see the structure and capabilities."
-          />
           <ComparisonComponent />
-          <StatsComponent />
-          <TestimonialComponent />
           <TimelineComponent />
           <CtaSection />
         </main>
