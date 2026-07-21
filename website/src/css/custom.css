@@ -1,0 +1,343 @@
+@import "tailwindcss/theme" layer(theme);
+@import "tailwindcss/utilities" layer(utilities);
+
+/* Override TW v4 dark variant to use Docusaurus's data-theme attribute */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/**
+ * Ignix UI Design Token Bridge for Docusaurus
+ * Maps Ignix UI CSS variables to Docusaurus Infima variables,
+ * matching the Mindfire Docusaurus aesthetic (red primary).
+ */
+
+:root {
+  /* Primary palette — Modern Crimson-Rose, matching Ignix UI & GPX reference sites */
+  --ifm-color-primary: #e11d48;
+  --ifm-color-primary-dark: #be123c;
+  --ifm-color-primary-darker: #9f1239;
+  --ifm-color-primary-darkest: #4c0519;
+  --ifm-color-primary-light: #f43f5e;
+  --ifm-color-primary-lighter: #fb7185;
+  --ifm-color-primary-lightest: #fecdd3;
+  --ifm-background-color: #ffffff;
+  --ifm-code-font-size: 95%;
+  --ifm-paragraph-margin-bottom: 0rem;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+
+  /* Ignix UI Design Tokens */
+  --radius: 0.625rem;
+  --background: var(--ifm-background-color, #ffffff);
+  --foreground: var(--ifm-font-color-base, #1c1e21);
+  --card: var(--ifm-card-background-color, #ffffff);
+  --card-foreground: var(--ifm-font-color-base, #1c1e21);
+  --popover: var(--ifm-card-background-color, #ffffff);
+  --popover-foreground: var(--ifm-font-color-base, #1c1e21);
+
+  --primary: 348 83% 50%;
+  --primary-light: 348 89% 60%;
+  --primary-dark: 348 83% 41%;
+  --primary-darker: 348 80% 35%;
+  --primary-darkest: 348 81% 16%;
+  --primary-lighter: 348 95% 71%;
+  --primary-lightest: 348 100% 88%;
+
+  --primary-foreground: #ffffff;
+  --secondary: var(--ifm-color-emphasis-200, #f5f5f5);
+  --secondary-foreground: var(--ifm-color-emphasis-800, #3e3e3e);
+  --muted: var(--ifm-color-emphasis-300, #e0e0e0);
+  --muted-foreground: #3e3e3e;
+  --accent: var(--ifm-color-emphasis-200, #f5f5f5);
+  --accent-foreground: var(--ifm-color-emphasis-800, #3e3e3e);
+  --destructive: var(--ifm-color-danger, #d93636);
+  --border: var(--ifm-color-emphasis-300, #e0e0e0);
+  --input: var(--ifm-color-emphasis-300, #e0e0e0);
+  --ring: var(--ifm-color-primary-light);
+
+  /* Sidebar tokens */
+  --sidebar: var(--ifm-background-color, #ffffff);
+  --sidebar-foreground: var(--ifm-font-color-base, #1c1e21);
+  --sidebar-primary: hsl(var(--primary));
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: var(--ifm-color-emphasis-200, #f5f5f5);
+  --sidebar-accent-foreground: var(--ifm-color-emphasis-800, #3e3e3e);
+  --sidebar-border: var(--ifm-color-emphasis-300, #e0e0e0);
+  --sidebar-ring: hsl(var(--primary-light));
+
+  /* Semantic tokens */
+  --success: #059669;
+  --success-foreground: #ffffff;
+  --warning: #d97706;
+  --warning-foreground: #ffffff;
+  --error: #dc2626;
+  --error-foreground: #ffffff;
+  --info: #06b6d4;
+  --info-foreground: #ffffff;
+
+  --red-primary: hsl(var(--primary));
+}
+
+/* Dark mode — pure black background matching reference sites */
+[data-theme='dark'] {
+  --ifm-background-color: #000000;
+  --ifm-color-primary: hsl(348 83% 50%);
+  --ifm-color-primary-dark: hsl(348 83% 41%);
+  --ifm-color-primary-darker: hsl(348 80% 35%);
+  --ifm-color-primary-darkest: hsl(348 81% 16%);
+  --ifm-color-primary-light: hsl(348 89% 60%);
+  --ifm-color-primary-lighter: hsl(348 95% 71%);
+  --ifm-color-primary-lightest: hsl(348 100% 88%);
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+
+  --radius: 0.625rem;
+  --background: var(--ifm-background-color, #000000);
+  --foreground: var(--ifm-font-color-base, #ffffff);
+  --card: var(--ifm-card-background-color, #242526);
+  --card-foreground: var(--ifm-font-color-base, #ffffff);
+  --popover: var(--ifm-card-background-color, #242526);
+  --popover-foreground: var(--ifm-font-color-base, #ffffff);
+
+  --primary-foreground: #ffffff;
+  --secondary: var(--ifm-color-emphasis-200, #3e3e3e);
+  --secondary-foreground: var(--ifm-color-emphasis-800, #f5f5f5);
+  --muted: var(--ifm-color-emphasis-300, #3e3e3e);
+  --muted-foreground: #a0a0a0;
+  --accent: var(--ifm-color-emphasis-200, #3e3e3e);
+  --accent-foreground: var(--ifm-color-emphasis-800, #f5f5f5);
+  --destructive: var(--ifm-color-danger, #ef4444);
+  --border: var(--ifm-color-emphasis-300, #3e3e3e);
+  --input: var(--ifm-color-emphasis-300, #3e3e3e);
+  --ring: var(--ifm-color-primary-light);
+
+  --sidebar: var(--ifm-background-color, #000000);
+  --sidebar-foreground: var(--ifm-font-color-base, #ffffff);
+  --sidebar-primary: hsl(var(--primary));
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: var(--ifm-color-emphasis-200, #3e3e3e);
+  --sidebar-accent-foreground: var(--ifm-color-emphasis-800, #f5f5f5);
+  --sidebar-border: var(--ifm-color-emphasis-300, #3e3e3e);
+  --sidebar-ring: hsl(var(--primary-light));
+
+  --success: #10b981;
+  --success-foreground: #ffffff;
+  --warning: #f59e0b;
+  --warning-foreground: #ffffff;
+  --error: #ef4444;
+  --error-foreground: #ffffff;
+  --info: #22d3ee;
+  --info-foreground: #ffffff;
+}
+
+/* Ensure global footer blends with the page background */
+.footer {
+  background-color: transparent !important;
+  border-top: none !important;
+}
+
+/* Enhanced animations and transitions */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(225, 29, 72, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(225, 29, 72, 0.2);
+  }
+}
+
+/* Smooth transitions for interactive elements */
+button,
+a,
+[role="button"] {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced section backgrounds */
+section {
+  position: relative;
+}
+
+section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Code block enhancements */
+code {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Courier New', monospace;
+  letter-spacing: 0.02em;
+}
+
+pre {
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  overflow-x: auto;
+  transition: all 0.3s ease;
+}
+
+pre:hover {
+  border-color: hsl(var(--primary));
+  box-shadow: 0 0 20px rgba(225, 29, 72, 0.15);
+}
+
+
+/* Hide scrollbar utility */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Global Text Color Fix (ensures text doesn't inherit primary color globally) */
+html, body, .markdown {
+  color: var(--foreground) !important;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary));
+  border-radius: 4px;
+  opacity: 0.5;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  opacity: 1;
+}
+
+/* Selection styling */
+::selection {
+  background: hsl(var(--primary));
+  color: white;
+}
+
+/* Accessible focus states */
+button:focus,
+a:focus,
+[role="button"]:focus {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
+}
+
+/* Responsive text sizing */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.875rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
+}
+
+
+/* Floating glassmorphic navbar styling */
+.navbar {
+  background-color: color-mix(in oklab, var(--background) 70%, transparent) !important;
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid color-mix(in oklab, var(--border) 40%, transparent) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+}
+
+[data-theme='dark'] .navbar {
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Background utilities for visual depth */
+.grid-bg {
+  position: relative;
+  background-image: radial-gradient(color-mix(in oklab, hsl(var(--primary)) 12%, transparent) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+[data-theme='dark'] .grid-bg {
+  background-image: radial-gradient(color-mix(in oklab, hsl(var(--primary)) 25%, transparent) 1.5px, transparent 1.5px);
+}
+
+.glow-blob {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in oklab, hsl(var(--primary)) 12%, transparent) 0%, transparent 70%);
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.8;
+}
+
+/* Selects the Docusaurus skip link container by its functional attributes */
+div[role="region"][aria-label="Skip to main content"],
+a[class^="skipToContent_"] {
+  display: none !important;
+}
