@@ -237,15 +237,19 @@ pre:hover {
   box-shadow: 0 0 20px rgba(225, 29, 72, 0.15);
 }
 
-/* Link enhancements */
-a {
-  color: hsl(var(--primary));
-  text-decoration: none;
-  position: relative;
+
+/* Hide scrollbar utility */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-a:hover {
-  color: hsl(var(--primary-light));
+/* Global Text Color Fix (ensures text doesn't inherit primary color globally) */
+html, body, .markdown {
+  color: var(--foreground) !important;
 }
 
 /* Scrollbar styling */
@@ -313,8 +317,11 @@ a:focus,
 /* Background utilities for visual depth */
 .grid-bg {
   position: relative;
-  background-image: radial-gradient(color-mix(in oklab, hsl(var(--primary)) 6%, transparent) 1px, transparent 1px);
+  background-image: radial-gradient(color-mix(in oklab, hsl(var(--primary)) 12%, transparent) 1px, transparent 1px);
   background-size: 24px 24px;
+}
+[data-theme='dark'] .grid-bg {
+  background-image: radial-gradient(color-mix(in oklab, hsl(var(--primary)) 25%, transparent) 1.5px, transparent 1.5px);
 }
 
 .glow-blob {

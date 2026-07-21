@@ -23,7 +23,7 @@ const steps = [
     description: 'Start with the ADAC v0.1 specification to understand the schema, structure, and core concepts.',
     icon: '📖',
     action: 'Read Spec',
-    link: '/docs/reference/adac-v0.1',
+    link: '/docs/reference/core-schema',
   },
   {
     number: 2,
@@ -31,7 +31,7 @@ const steps = [
     description: 'Write a simple YAML file describing your infrastructure using the ADAC schema.',
     icon: '✍️',
     action: 'See Examples',
-    link: '#',
+    link: '/docs/guides/quick-start',
   },
   {
     number: 3,
@@ -39,7 +39,7 @@ const steps = [
     description: 'Use the community validators to check your ADAC file for errors and compliance.',
     icon: '✅',
     action: 'Validate',
-    link: '#',
+    link: '/docs/guides/quick-start#2-validate-your-adac-file',
   },
   {
     number: 4,
@@ -47,7 +47,7 @@ const steps = [
     description: 'Use any ADAC-compatible tool to generate diagrams and documentation from your specification.',
     icon: '📊',
     action: 'Explore Tools',
-    link: '#',
+    link: '/docs/guides/use-cases',
   },
 ];
 
@@ -56,19 +56,19 @@ const resources = [
     title: 'API Reference',
     description: 'Complete API and schema documentation',
     icon: '🔧',
-    link: '/docs/reference/adac-v0.1',
+    link: '/docs/reference/core-schema',
   },
   {
     title: 'Examples',
     description: 'Real-world ADAC specifications you can use as templates',
     icon: '📚',
-    link: '#',
+    link: '/docs/guides/use-cases',
   },
   {
     title: 'Community Tools',
     description: 'Discover tools built by the ADAC community',
     icon: '🛠️',
-    link: '#',
+    link: '/docs/contributing',
   },
   {
     title: 'GitHub Discussions',
@@ -320,7 +320,7 @@ export default function GettingStarted() {
 
               <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
                 <Button asChild size="lg" variant="default" style={{ gap: '0.5rem' }}>
-                  <Link to="/docs/reference/adac-v0.1">
+                  <Link to="/docs/reference/core-schema">
                     <BookOpen size={18} /> Read Documentation
                   </Link>
                 </Button>

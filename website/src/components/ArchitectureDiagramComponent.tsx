@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, Variants } from 'framer-motion';
 import { FileCode2, CheckCircle, Zap, Layers, Image as ImageIcon } from 'lucide-react';
 
@@ -49,7 +49,21 @@ const pipelineSteps: PipelineStep[] = [
 ];
 
 export function ArchitectureDiagramComponent() {
-  const [activeStep, setActiveStep] = useState<string | null>(null);
+  const [activeStep, setActiveStep] = useState<string | null>(pipelineSteps[0].id);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    if (isHovered) return;
+    const timer = setInterval(() => {
+      setActiveStep((prev) => {
+        if (!prev) return pipelineSteps[0].id;
+        const currentIdx = pipelineSteps.findIndex(s => s.id === prev);
+        const nextIdx = (currentIdx + 1) % pipelineSteps.length;
+        return pipelineSteps[nextIdx].id;
+      });
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [isHovered]);
 
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -84,11 +98,13 @@ export function ArchitectureDiagramComponent() {
     <div style={{ width: '100%', maxWidth: '1000px', margin: '0 auto' }}>
       {/* Desktop View - Horizontal Flow */}
       <motion.div
-        className="hidden md:flex gap-4 items-stretch overflow-auto pb-4"
+        className="hidden md:flex gap-2 lg:gap-4 items-stretch overflow-visible"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: '-100px' }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
         {pipelineSteps.map((step, idx) => (
           <React.Fragment key={step.id}>
@@ -99,12 +115,12 @@ export function ArchitectureDiagramComponent() {
               onMouseLeave={() => setActiveStep(null)}
               onClick={() => setActiveStep(activeStep === step.id ? null : step.id)}
               style={{
-                flex: '0 0 200px',
+                flex: 1,
                 cursor: 'pointer',
                 borderRadius: '12px',
                 background: 'var(--card-background)',
                 border: '2px solid var(--card-border)',
-                padding: '1.5rem',
+                padding: '1rem',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
@@ -250,6 +266,8 @@ export function ArchitectureDiagramComponent() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: '-100px' }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
         {pipelineSteps.map((step, idx) => (
           <React.Fragment key={step.id}>

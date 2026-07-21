@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronRight, Cloud, Shield, Zap, Users, Package, GitBranch } from 'lucide-react';
 
@@ -63,7 +63,16 @@ const features: CarouselFeature[] = [
 ];
 
 export function FeatureCarouselComponent() {
-  const [currentIdx, setCurrentIdx] = React.useState(0);
+  const [currentIdx, setCurrentIdx] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    if (isHovered) return;
+    const timer = setInterval(() => {
+      setCurrentIdx((prev) => (prev + 1) % features.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [isHovered]);
 
   const currentFeature = features[currentIdx];
   const nextIdx = (currentIdx + 1) % features.length;
@@ -75,7 +84,7 @@ export function FeatureCarouselComponent() {
 
   const itemVariants = {
     enter: (direction: number) => ({
-      x: direction > 0 ? 1000 : -1000,
+      x: direction > 0 ? -1000 : 1000,
       opacity: 0,
     }),
     center: {
@@ -85,7 +94,7 @@ export function FeatureCarouselComponent() {
     },
     exit: (direction: number) => ({
       zIndex: 0,
-      x: direction < 0 ? 1000 : -1000,
+      x: direction < 0 ? -1000 : 1000,
       opacity: 0,
     }),
   };
@@ -102,6 +111,8 @@ export function FeatureCarouselComponent() {
           background: 'var(--card-background)',
           border: '2px solid var(--card-border)',
         }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
         {/* Feature Cards Stack */}
         {features.map((feature, idx) => {
