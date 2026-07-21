@@ -1,6 +1,5 @@
 ---
-sidebar_position: 1
-title: Core Schema
+title: Full Schema Specification
 ---
 
 # Core Schema
@@ -9,6 +8,11 @@ The ADAC specification defines a standard structure for modeling cloud infrastru
 
 :::info Status
 The core schema is currently in **v0.1** (Release Candidate). All feedback is welcome.
+:::
+
+:::info In this reference
+**Time to read:** 10 minutes
+**Goal:** Understand the exact JSON Schema requirements, data types, and required fields for writing a valid ADAC architecture file.
 :::
 
 ## Architecture Model
@@ -23,8 +27,8 @@ graph TD
   A --> E[Connections]
   A --> F[Governance]
 
-  classDef default fill:#1e1e1e,stroke:#3b82f6,stroke-width:2px,color:#fff;
-  classDef root fill:#3b82f6,stroke:#1e1e1e,stroke-width:2px,color:#fff;
+  classDef default fill:var(--ifm-color-primary-lightest),stroke:var(--ifm-color-primary),stroke-width:2px,color:var(--ifm-color-primary-darkest);
+  classDef root fill:var(--ifm-color-primary),stroke:var(--ifm-color-primary-darkest),stroke-width:2px,color:#fff;
   class A root;
 ```
 
@@ -47,7 +51,7 @@ import TabItem from '@theme/TabItem';
 
 <Tabs>
   <TabItem value="yaml" label="YAML" default>
-    ```yaml
+    ```yaml title="root.adac.yaml"
     version: "0.1"              
     metadata: {...}             
     applications: [...]         
@@ -58,7 +62,7 @@ import TabItem from '@theme/TabItem';
     ```
   </TabItem>
   <TabItem value="json" label="JSON">
-    ```json
+    ```json title="root.adac.json"
     {
       "version": "0.1",
       "metadata": {},
@@ -75,7 +79,7 @@ import TabItem from '@theme/TabItem';
 
 ## Metadata Object
 
-The metadata object provides essential context about the architecture document itself.
+The metadata object provides essential context about the architecture document itself. It is used by visualization tools to generate the diagram title, author attribution, and version tracking.
 
 | Field | Type | Requirement | Description |
 |---|---|---|---|
@@ -91,7 +95,7 @@ The metadata object provides essential context about the architecture document i
 
 <Tabs>
   <TabItem value="yaml" label="YAML" default>
-    ```yaml
+    ```yaml title="metadata.adac.yaml"
     metadata:
       name: "Project Name"                    
       description: "Description"              
@@ -105,7 +109,7 @@ The metadata object provides essential context about the architecture document i
     ```
   </TabItem>
   <TabItem value="json" label="JSON">
-    ```json
+    ```json title="metadata.adac.json"
     {
       "metadata": {
         "name": "Project Name",
@@ -126,7 +130,7 @@ The metadata object provides essential context about the architecture document i
 
 ## Application Object
 
-Applications represent logical units of compute or functionality in your architecture.
+Applications represent logical units of compute or functionality in your architecture. They describe *what* your system is doing, rather than the physical infrastructure it runs on.
 
 | Field | Type | Requirement | Description |
 |---|---|---|---|
@@ -146,7 +150,7 @@ Applications represent logical units of compute or functionality in your archite
 
 <Tabs>
   <TabItem value="yaml" label="YAML" default>
-    ```yaml
+    ```yaml title="application.adac.yaml"
     applications:
       - id: "unique-id"                       
         name: "Human Readable Name"           
@@ -163,7 +167,7 @@ Applications represent logical units of compute or functionality in your archite
     ```
   </TabItem>
   <TabItem value="json" label="JSON">
-    ```json
+    ```json title="application.adac.json"
     {
       "applications": [
         {
@@ -190,7 +194,7 @@ Applications represent logical units of compute or functionality in your archite
 
 ## Infrastructure Object
 
-The infrastructure object holds your physical and virtual cloud resources.
+The infrastructure object holds your physical and virtual cloud resources. This section maps directly to real-world cloud provider environments and tracks the topology of your deployed architecture.
 
 | Field | Type | Requirement | Description |
 |---|---|---|---|
@@ -201,7 +205,7 @@ The infrastructure object holds your physical and virtual cloud resources.
 | Field | Type | Requirement | Description |
 |---|---|---|---|
 | `id` | `string` | **REQUIRED** | Unique ID |
-| `provider` | `string` | **REQUIRED** | Cloud provider (only `aws` in v0.1) |
+| `provider` | `string` | **REQUIRED** | Cloud provider (e.g. `aws`, `gcp`, `azure`) |
 | `region` | `string` | **REQUIRED** | Cloud region (e.g. `us-east-1`) |
 | `account_id` | `string` | **OPTIONAL** | 12 digit AWS account ID |
 | `vpc_id` | `string` | **OPTIONAL** | VPC ID |
@@ -210,7 +214,7 @@ The infrastructure object holds your physical and virtual cloud resources.
 
 <Tabs>
   <TabItem value="yaml" label="YAML" default>
-    ```yaml
+    ```yaml title="infrastructure.adac.yaml"
     infrastructure:
       clouds:
         - id: "aws-prod"                      
@@ -223,7 +227,7 @@ The infrastructure object holds your physical and virtual cloud resources.
     ```
   </TabItem>
   <TabItem value="json" label="JSON">
-    ```json
+    ```json title="infrastructure.adac.json"
     {
       "infrastructure": {
         "clouds": [
@@ -245,7 +249,7 @@ The infrastructure object holds your physical and virtual cloud resources.
 
 ## Service Object
 
-Services represent individual cloud resources (like an EC2 instance or RDS database).
+Services represent individual cloud resources (like an EC2 instance or RDS database). The `runs` array connects back to your Application IDs, effectively mapping software to hardware.
 
 | Field | Type | Requirement | Description |
 |---|---|---|---|
@@ -264,5 +268,5 @@ Services represent individual cloud resources (like an EC2 instance or RDS datab
 | `monitoring` | `object` | **OPTIONAL** | Monitoring setup details |
 
 :::tip Service List
-For a complete list of the 90+ supported AWS services, see [AWS Services](./aws-services).
+For a complete list of supported cloud services, see [Supported Clouds](./supported-clouds/aws).
 :::

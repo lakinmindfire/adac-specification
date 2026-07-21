@@ -4,7 +4,7 @@ import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import { Button } from '../components/ui/Button';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '../components/ui/Card';
-import { ArrowRight, Download, BookOpen } from 'lucide-react';
+import { ArrowRight, Download, BookOpen, PenTool, CheckCircle, BarChart, Settings, Library, Wrench, MessageSquare } from 'lucide-react';
 
 /* Standard Github SVG Icon */
 function GithubIcon({ size = 18 }: { size?: number }) {
@@ -21,33 +21,33 @@ const steps = [
     number: 1,
     title: 'Read the Specification',
     description: 'Start with the ADAC v0.1 specification to understand the schema, structure, and core concepts.',
-    icon: '📖',
+    icon: <BookOpen size={36} style={{ color: 'hsl(var(--primary))' }} />,
     action: 'Read Spec',
-    link: '/docs/reference/core-schema',
+    link: '/docs/reference/schema',
   },
   {
     number: 2,
     title: 'Create Your First Architecture',
     description: 'Write a simple YAML file describing your infrastructure using the ADAC schema.',
-    icon: '✍️',
+    icon: <PenTool size={36} style={{ color: 'hsl(var(--primary))' }} />,
     action: 'See Examples',
-    link: '/docs/guides/quick-start',
+    link: '/docs/getting-started/quick-start',
   },
   {
     number: 3,
     title: 'Validate Your ADAC File',
     description: 'Use the community validators to check your ADAC file for errors and compliance.',
-    icon: '✅',
+    icon: <CheckCircle size={36} style={{ color: 'hsl(var(--primary))' }} />,
     action: 'Validate',
-    link: '/docs/guides/quick-start#2-validate-your-adac-file',
+    link: '/docs/getting-started/quick-start#2-validate-your-adac-file',
   },
   {
     number: 4,
     title: 'Generate Diagrams',
     description: 'Use any ADAC-compatible tool to generate diagrams and documentation from your specification.',
-    icon: '📊',
+    icon: <BarChart size={36} style={{ color: 'hsl(var(--primary))' }} />,
     action: 'Explore Tools',
-    link: '/docs/guides/use-cases',
+    link: '/docs/use-cases/web-application',
   },
 ];
 
@@ -55,25 +55,25 @@ const resources = [
   {
     title: 'API Reference',
     description: 'Complete API and schema documentation',
-    icon: '🔧',
-    link: '/docs/reference/core-schema',
+    icon: <Settings size={28} style={{ color: 'var(--foreground)' }} />,
+    link: '/docs/reference/schema',
   },
   {
     title: 'Examples',
     description: 'Real-world ADAC specifications you can use as templates',
-    icon: '📚',
-    link: '/docs/guides/use-cases',
+    icon: <Library size={28} style={{ color: 'var(--foreground)' }} />,
+    link: '/docs/use-cases/web-application',
   },
   {
     title: 'Community Tools',
     description: 'Discover tools built by the ADAC community',
-    icon: '🛠️',
+    icon: <Wrench size={28} style={{ color: 'var(--foreground)' }} />,
     link: '/docs/contributing',
   },
   {
     title: 'GitHub Discussions',
     description: 'Ask questions and discuss with the community',
-    icon: '💬',
+    icon: <MessageSquare size={28} style={{ color: 'var(--foreground)' }} />,
     link: 'https://github.com/lakinmindfire/adac-specification/discussions',
   },
 ];
@@ -81,7 +81,7 @@ const resources = [
 export default function GettingStarted() {
   return (
     <Layout title="Getting Started" description="Get up and running with ADAC in minutes">
-      <main style={{ width: '100%' }}>
+      <main className="ambient-glow-wrapper" style={{ width: '100%' }}>
         {/* Hero */}
         <section
           style={{
@@ -320,7 +320,7 @@ export default function GettingStarted() {
 
               <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
                 <Button asChild size="lg" variant="default" style={{ gap: '0.5rem' }}>
-                  <Link to="/docs/reference/core-schema">
+                  <Link to="/docs/reference/schema">
                     <BookOpen size={18} /> Read Documentation
                   </Link>
                 </Button>

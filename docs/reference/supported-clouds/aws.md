@@ -1,17 +1,31 @@
 ---
-sidebar_position: 3
-title: Supported AWS Services
+title: Amazon Web Services (AWS)
 ---
 
-# 🎛️ Supported AWS Services
+# Amazon Web Services (AWS)
 
-ADAC v0.1 supports over 90 AWS services. When defining an `infrastructure.clouds` block for AWS, the `service` ID must exactly match one of the entries below.
+ADAC v0.1 provides comprehensive support for Amazon Web Services (AWS), with over 90 natively supported services mapped to architecture icons.
 
-:::info Search
+## Example Usage
+
+When defining an `infrastructure.clouds` block in your YAML, set the `provider` to `aws`.
+
+```yaml title="aws-example.adac.yaml"
+infrastructure:
+  clouds:
+    - id: "aws-prod"
+      provider: "aws"
+      region: "us-east-1"
+      services:
+        - id: "web-cluster"
+          service: "ecs-fargate"
+```
+
+## Supported Service IDs
+
 You can use `Ctrl+F` or `Cmd+F` to quickly find a specific service in the tables below.
-:::
 
-## Compute (7 services)
+### Compute
 
 | Service ID | Description |
 |---|---|
@@ -24,7 +38,7 @@ You can use `Ctrl+F` or `Cmd+F` to quickly find a specific service in the tables
 | `lightsail` | Virtual Private Servers |
 | `batch` | Batch Processing |
 
-## Database (13 services)
+### Database (14 services)
 
 | Service ID | Description |
 |---|---|
@@ -43,7 +57,7 @@ You can use `Ctrl+F` or `Cmd+F` to quickly find a specific service in the tables
 | `elasticache-memcached`| In-Memory Cache (Memcached) |
 | `redshift` | Data Warehouse |
 
-## Storage (5 services)
+### Storage (5 services)
 
 | Service ID | Description |
 |---|---|
@@ -53,7 +67,7 @@ You can use `Ctrl+F` or `Cmd+F` to quickly find a specific service in the tables
 | `glacier` | Cold Storage Archival |
 | `storage-gateway` | Hybrid Cloud Storage |
 
-## Networking (10 services)
+### Networking (17 services)
 
 | Service ID | Description |
 |---|---|
@@ -75,7 +89,7 @@ You can use `Ctrl+F` or `Cmd+F` to quickly find a specific service in the tables
 | `vpc-peering` | VPC to VPC connection |
 | `privatelink` | Private Service Access |
 
-## Messaging & Events (7 services)
+### Messaging & Events (8 services)
 
 | Service ID | Description |
 |---|---|
@@ -88,7 +102,7 @@ You can use `Ctrl+F` or `Cmd+F` to quickly find a specific service in the tables
 | `eventbridge` | Serverless Event Bus |
 | `step-functions` | Visual Workflow Orchestration |
 
-## Monitoring (6 services)
+### Monitoring (6 services)
 
 | Service ID | Description |
 |---|---|
@@ -99,7 +113,7 @@ You can use `Ctrl+F` or `Cmd+F` to quickly find a specific service in the tables
 | `config` | Resource Inventory and Configuration History |
 | `systems-manager` | Operations Management |
 
-## Security (9 services)
+### Security (11 services)
 
 | Service ID | Description |
 |---|---|
@@ -115,7 +129,7 @@ You can use `Ctrl+F` or `Cmd+F` to quickly find a specific service in the tables
 | `inspector` | Automated Vulnerability Management |
 | `acm` | Certificate Manager |
 
-## AI / ML (7 services)
+### AI / ML (8 services)
 
 | Service ID | Description |
 |---|---|
@@ -128,7 +142,7 @@ You can use `Ctrl+F` or `Cmd+F` to quickly find a specific service in the tables
 | `polly` | Text to Speech |
 | `bedrock` | Generative AI Platform |
 
-## Analytics (6 services)
+### Analytics (5 services)
 
 | Service ID | Description |
 |---|---|
@@ -138,7 +152,7 @@ You can use `Ctrl+F` or `Cmd+F` to quickly find a specific service in the tables
 | `data-pipeline` | Data Workflow Orchestration |
 | `quicksight` | Business Intelligence Service |
 
-## Developer Tools (8 services)
+### Developer Tools (9 services)
 
 | Service ID | Description |
 |---|---|
@@ -152,7 +166,7 @@ You can use `Ctrl+F` or `Cmd+F` to quickly find a specific service in the tables
 | `ses` | Simple Email Service |
 | `pinpoint` | Multichannel Marketing Communications |
 
-## Others (8 services)
+### Infrastructure & Management (7 services)
 
 | Service ID | Description |
 |---|---|

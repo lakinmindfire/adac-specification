@@ -1,11 +1,14 @@
 ---
-sidebar_position: 4
 title: Cost Tracking
 ---
 
-# 💰 Cost Tracking
+# Cost Tracking
 
 ADAC provides built-in fields to track and analyze infrastructure costs directly within your architecture definition. This brings cost transparency to the design phase.
+
+:::info Why Track Costs in ADAC?
+**Cost-Aware Architecture:** By explicitly modeling costs alongside the services that generate them, engineering teams can make informed trade-offs *before* provisioning resources. This data powers the CLI's `adac cost` command to generate detailed financial reports.
+:::
 
 ## Service-Level Costs
 
@@ -30,7 +33,7 @@ import TabItem from '@theme/TabItem';
 
 <Tabs>
   <TabItem value="yaml" label="YAML" default>
-    ```yaml
+    ```yaml title="service-cost.adac.yaml"
     services:
       - id: "rds-main"
         service: "rds-postgres"
@@ -47,7 +50,7 @@ import TabItem from '@theme/TabItem';
     ```
   </TabItem>
   <TabItem value="json" label="JSON">
-    ```json
+    ```json title="service-cost.adac.json"
     {
       "services": [
         {
@@ -86,7 +89,7 @@ At the root level of your ADAC file, you can define an overall cost summary.
 
 <Tabs>
   <TabItem value="yaml" label="YAML" default>
-    ```yaml
+    ```yaml title="root-cost.adac.yaml"
     cost:
       total_monthly: 5420
       currency: "USD"
@@ -104,7 +107,7 @@ At the root level of your ADAC file, you can define an overall cost summary.
     ```
   </TabItem>
   <TabItem value="json" label="JSON">
-    ```json
+    ```json title="root-cost.adac.json"
     {
       "cost": {
         "total_monthly": 5420,

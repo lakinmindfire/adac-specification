@@ -3,7 +3,7 @@ sidebar_position: 10
 title: Contributing & Roadmap
 ---
 
-# 🤝 Contributing to ADAC
+# Contributing to ADAC
 
 We're currently in the **Proof of Concept (POC)** phase. Your feedback is crucial to shaping the future of the ADAC specification!
 
@@ -23,7 +23,7 @@ We're currently in the **Proof of Concept (POC)** phase. Your feedback is crucia
 
 ---
 
-## ✅ Validation Rules (For Tool Authors) {#validation-rules-for-tool-authors}
+## Validation Rules (For Tool Authors) {#validation-rules-for-tool-authors}
 
 If you are building an ADAC tool, ensure your parser enforces the following rules (also defined in the JSON Schema):
 
@@ -40,52 +40,52 @@ If you are building an ADAC tool, ensure your parser enforces the following rule
 
 ---
 
-## 🔧 Tools Roadmap
+## Tools Roadmap
 
 ### Phase 1: MVP (Current)
-- ✅ JSON Schema v0.1
-- ✅ Example ADAC files
-- 🔄 CLI validator
-- 🔄 Basic diagram generator
+- [x] JSON Schema v0.1
+- [x] Example ADAC files
+- [x] CLI validator (`@mindfiredigital/adac-diagram`)
+- [x] Basic diagram generator
+- [x] Multi-cloud support (AWS, GCP, Azure)
 
 ### Phase 2: Core Tools 
-- 🔄 Interactive web viewer
-- 🔄 Cost analyzer
-- 🔄 Documentation generator
+- [ ] Interactive web viewer (`adac-web`)
+- [ ] Cost analyzer plugin
+- [ ] Documentation generator
 
 ### Phase 3: Advanced Features 
-- 🔄 Multi-cloud support (Azure, GCP)
-- 🔄 Terraform export
-- 🔄 CloudFormation export
-- 🔄 GitHub Actions integration
+- [ ] Terraform export
+- [ ] CloudFormation export
+- [ ] GitHub Actions integration
 
 ---
 
-## 📝 Changelog
+## Changelog
 
-### v0.1 (2025-01-08) - Initial POC
-- Minimal schema with AWS support
-- 90+ AWS services covered
+### v0.1 (Current)
+- Minimal schema with multi-cloud support (AWS, GCP, Azure)
+- Over 200+ services covered natively
 - Cost tracking built-in
 - Compliance tagging
 - SLA definitions
 - Connection modeling
+- CLI validator and diagram ecosystem via `@mindfiredigital/adac-tools`
 
 ### Upcoming v0.2
-- Azure and GCP support
-- Enhanced validation
+- Enhanced schema validation rules
+- Interactive web viewer
 - Cost optimization suggestions
 - Compliance validators
-- Interactive web viewer
 
 ---
 
-## 🔗 Resources
+## Resources
 
 - **Schema:** `schema/adac-v0.1-schema.json`
 - **Examples:** `examples/` directory
 - **GitHub:** [github.com/lakinmindfire/adac-specification](https://github.com/lakinmindfire/adac-specification)
 - **Discussions:** [github.com/lakinmindfire/adac-specification/discussions](https://github.com/lakinmindfire/adac-specification/discussions)
 
-## 📄 License
+## License
 Apache 2.0 - See LICENSE file

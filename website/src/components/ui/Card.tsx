@@ -52,17 +52,17 @@ const cardVariants = cva(
     variants: {
       variant: {
         default: cn(
-          "rounded-xl bg-background/80 backdrop-blur-sm text-foreground",
-          "border border-border/60 shadow-lg shadow-black/5",
+          "rounded-xl bg-background/40 backdrop-blur-xl text-foreground",
+          "border border-white/20 dark:border-white/10 shadow-lg shadow-black/5",
           "dark:shadow-white/5 hover:shadow-xl hover:shadow-black/10",
-          "dark:hover:shadow-white/10 hover:border-border/80",
+          "dark:hover:shadow-white/10 hover:border-white/30 hover:bg-background/50",
           "before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/5 before:to-transparent before:pointer-events-none"
         ),
         elevated: cn(
-          "rounded-2xl bg-background text-foreground",
+          "rounded-2xl bg-background/50 backdrop-blur-xl text-foreground",
           "shadow-2xl shadow-black/15 dark:shadow-black/40",
           "hover:shadow-3xl hover:-translate-y-2 hover:shadow-black/20",
-          "dark:hover:shadow-black/50 border border-border/40",
+          "dark:hover:shadow-black/50 border border-white/20 dark:border-white/10 hover:bg-background/60",
           "before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/10 before:via-white/5 before:to-transparent before:pointer-events-none"
         ),
         glass: cn(

@@ -1,11 +1,28 @@
 ---
-sidebar_position: 2
-title: Connection Object
+title: Connections
 ---
 
 # Connection Object
 
 The connection object defines how different applications and services interact with each other. This is crucial for generating accurate architecture diagrams, validating security group rules, and ensuring compliance.
+
+:::info In this concept guide
+**Time to read:** 6 minutes
+**Goal:** Understand how to accurately model data flow, API requests, and network routing between architectural components.
+:::
+
+## The Connectivity Layer
+
+Connections describe the flow of data and dependencies across your architecture. They are separated from the application and infrastructure definitions to allow you to easily trace "what talks to what" and infer security group or firewall rules.
+
+```mermaid
+graph LR
+  A[Frontend] -- HTTPS API Call --> B[Load Balancer]
+  B -- TCP --> C[Backend Service]
+  C -- Async Replication --> D[Database]
+
+  classDef default fill:var(--ifm-color-primary-lightest),stroke:var(--ifm-color-primary),stroke-width:2px;
+```
 
 ## Schema
 
@@ -29,7 +46,7 @@ import TabItem from '@theme/TabItem';
 
 <Tabs>
   <TabItem value="yaml" label="YAML" default>
-    ```yaml
+    ```yaml title="connections.adac.yaml"
     connections:
       - id: "unique-conn-id"                  
         from: "source-id"                     
@@ -53,7 +70,7 @@ import TabItem from '@theme/TabItem';
     ```
   </TabItem>
   <TabItem value="json" label="JSON">
-    ```json
+    ```json title="connections.adac.json"
     {
       "connections": [
         {

@@ -6,7 +6,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'ADAC Specification',
-  tagline: 'Specification for ADAC Tools',
+  tagline: 'The open specification for describing multi-cloud infrastructure as code',
   favicon: 'img/favicon.png',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -52,7 +52,6 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
           path: '../docs',
-          editUrl: undefined,
           sidebarCollapsed: true,
         },
         blog: false,
@@ -74,6 +73,22 @@ const config: Config = {
         name: 'keywords',
         content: 'adac, architecture, diagram, as code, infrastructure, yaml, json, specification, cloud, aws, azure, gcp, mindfire, mindfiredigital',
       },
+      {
+        property: 'og:type',
+        content: 'website',
+      },
+      {
+        property: 'og:title',
+        content: 'ADAC Specification - Architecture Diagram as Code',
+      },
+      {
+        name: 'twitter:card',
+        content: 'summary_large_image',
+      },
+      {
+        name: 'twitter:creator',
+        content: '@mindfiredigital',
+      },
     ],
     colorMode: {
       defaultMode: 'dark',
@@ -81,7 +96,7 @@ const config: Config = {
       respectPrefersColorScheme: false,
     },
     navbar: {
-      title: 'ADAC Specification',
+      title: 'ADAC',
       logo: {
         alt: 'ADAC Logo',
         src: 'img/logo.png',
@@ -90,30 +105,30 @@ const config: Config = {
       },
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
-          position: 'left',
-          label: 'Documentation',
-        },
-        {
           to: '/getting-started',
           label: 'Getting Started',
           position: 'left',
         },
         {
-          href: 'https://github.com/lakinmindfire/adac-specification',
-          label: 'GitHub',
-          position: 'right',
+          to: '/ecosystem',
+          label: 'Ecosystem',
+          position: 'left',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'tutorialSidebar',
+          position: 'left',
+          label: 'Documentation',
         },
       ],
     },
     footer: {
       style: 'light',
-      copyright: `© 2026 Mindfire FOSS`,
+      copyright: `© ${new Date().getFullYear()} Mindfire Digital | Apache 2.0 License`,
     },
     prism: {
       theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
+      darkTheme: prismThemes.nightOwl,
     },
   } satisfies Preset.ThemeConfig,
 };

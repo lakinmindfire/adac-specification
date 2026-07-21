@@ -1,11 +1,15 @@
 ---
-sidebar_position: 1
 title: Quick Start
 ---
 
-# 🚀 Quick Start (5-Minute Path)
+# Quick Start (5-Minute Path)
 
 Get up and running with ADAC by creating and validating your first architecture file.
+
+:::info In this guide
+**Time to complete:** 5 minutes
+**Goal:** Write a valid ADAC YAML file, install the CLI, and validate your architecture.
+:::
 
 :::tip Prerequisites
 You can write ADAC files in any text editor. For the best experience, we recommend using VS Code with a YAML extension.
@@ -20,7 +24,7 @@ import TabItem from '@theme/TabItem';
 
 <Tabs>
   <TabItem value="yaml" label="YAML" default>
-    ```yaml
+    ```yaml title="my-architecture.adac.yaml"
     version: "0.1"
 
     metadata:
@@ -43,7 +47,7 @@ import TabItem from '@theme/TabItem';
           
           services:
             - id: "ecs-frontend"
-              service: "ecs-fargate"
+              service: "ecs-fargate" # Must match exactly with ADAC's [Supported Cloud Services](../reference/supported-services)
               name: "Frontend Container"
               runs: ["web-app"]
               configuration:
@@ -62,7 +66,7 @@ import TabItem from '@theme/TabItem';
     ```
   </TabItem>
   <TabItem value="json" label="JSON">
-    ```json
+    ```json title="my-architecture.adac.json"
     {
       "version": "0.1",
       "metadata": {
@@ -120,34 +124,34 @@ import TabItem from '@theme/TabItem';
 
 ## 2. Validate Your ADAC File
 
-:::info Validator Status
-The official Node.js validator is currently in development. You can validate manually using the JSON Schema.
+:::info Official Tooling
+The official ADAC CLI is available via npm. It includes the validator, diagram generator, and cost analyzer.
 :::
 
-```bash
-# Using Node.js validator (coming soon)
-npm install -g adac-validator
-adac validate my-architecture.adac.yaml
+```bash title="Terminal"
+# Install the official ADAC CLI
+npm install -g @mindfiredigital/adac-diagram
 
-# Using JSON Schema directly
-ajv validate -s adac-v0.1-schema.json -d my-architecture.adac.yaml
+# Validate your architecture file
+adac validate my-architecture.adac.yaml
 ```
 
 ## 3. Generate Documentation & Diagrams
 
 Once validated, your ADAC file becomes the single source of truth for your architecture.
 
-```bash
-# Generate diagram (tool coming soon)
+```bash title="Terminal"
+# Generate a visual architecture diagram
 adac diagram my-architecture.adac.yaml -o architecture.svg
 
-# Generate cost report
+# Generate a cost report
 adac cost my-architecture.adac.yaml
 ```
 
 ## Next Steps
 
 Now that you've seen a basic ADAC file, you can:
-- Explore the [Core Schema](../reference/core-schema) to see all available fields.
-- Check out the [Supported AWS Services](../reference/aws-services) list.
-- See more complex [Use Cases](./use-cases).
+1. Explore the [Core Schema](../reference/schema) to see all available fields.
+2. Review how to model [Connections](../core-concepts/connections) between services.
+3. Check out the [Supported Cloud Services](../reference/supported-clouds/aws) list.
+4. See more complex [Use Cases](../use-cases/web-application).

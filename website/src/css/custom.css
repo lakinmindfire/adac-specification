@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss/theme" layer(theme);
 @import "tailwindcss/utilities" layer(utilities);
 
@@ -20,9 +21,11 @@
   --ifm-color-primary-lighter: #fb7185;
   --ifm-color-primary-lightest: #fecdd3;
   --ifm-background-color: #ffffff;
-  --ifm-code-font-size: 95%;
-  --ifm-paragraph-margin-bottom: 0rem;
+  --ifm-code-font-size: 90%;
+  --ifm-paragraph-margin-bottom: 1.25rem;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-font-family-base: 'Outfit', 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+  --ifm-heading-font-family: 'Outfit', 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
 
   /* Ignix UI Design Tokens */
   --radius: 0.625rem;
@@ -340,4 +343,353 @@ a:focus,
 div[role="region"][aria-label="Skip to main content"],
 a[class^="skipToContent_"] {
   display: none !important;
+}
+
+/* ==========================================================================
+   Premium Docs Styling Overrides
+   ========================================================================== */
+
+/* 1. Limit Prose Width for Readability */
+.theme-doc-markdown {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.theme-doc-markdown header h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+/* 2. Modern Sidebar Styling */
+.menu__link {
+  font-weight: 500;
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  transition: all 0.2s ease;
+  margin-bottom: 2px;
+}
+
+.menu__link--active {
+  background: color-mix(in oklab, hsl(var(--primary)) 8%, transparent) !important;
+  color: hsl(var(--primary)) !important;
+  position: relative;
+}
+
+/* Left accent bar for active items */
+.menu__link--active::before {
+  content: '';
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 60%;
+  width: 3px;
+  border-radius: 4px;
+  background-color: hsl(var(--primary));
+}
+
+.menu__list-item-collapsible {
+  border-radius: 6px;
+}
+
+.menu__list-item-collapsible:hover {
+  background: color-mix(in oklab, var(--muted) 40%, transparent);
+}
+
+/* 3. Sleek Admonitions (Callouts) */
+.theme-admonition {
+  border-radius: 12px !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.02) !important;
+  background: color-mix(in oklab, var(--muted) 20%, transparent) !important;
+  padding: 1.25rem 1.5rem !important;
+  margin-bottom: 1.5rem !important;
+  border-left-width: 4px !important;
+}
+
+.theme-admonition-info {
+  border-left-color: var(--ifm-color-primary) !important;
+}
+
+.theme-admonition-info .admonitionHeading_node_modules-\@docusaurus-theme-classic-lib-theme-Admonition-Layout-styles-module {
+  color: var(--ifm-color-primary) !important;
+}
+
+[data-theme='dark'] .theme-admonition {
+  background: color-mix(in oklab, #000000 40%, #1c1e21) !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2) !important;
+}
+
+/* 4. Premium Tables */
+.markdown table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+}
+
+.markdown th {
+  background: color-mix(in oklab, var(--muted) 40%, transparent);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  padding: 1rem 1.25rem;
+  color: var(--muted-foreground);
+  border-bottom: 1px solid var(--border);
+}
+
+.markdown td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid color-mix(in oklab, var(--border) 50%, transparent);
+  font-size: 0.9375rem;
+}
+
+.markdown tr:last-child td {
+  border-bottom: none;
+}
+
+.markdown tbody tr {
+  transition: background 0.2s ease;
+}
+
+.markdown tbody tr:hover {
+  background: color-mix(in oklab, var(--muted) 20%, transparent);
+}
+
+/* 5. Refined Inline Code */
+.markdown code:not([class*='language-']) {
+  background: color-mix(in oklab, hsl(var(--primary)) 8%, transparent);
+  color: var(--ifm-color-primary-dark);
+  border: 1px solid color-mix(in oklab, hsl(var(--primary)) 15%, transparent);
+  padding: 0.15rem 0.3rem;
+  border-radius: 6px;
+  font-size: 0.875em;
+}
+
+[data-theme='dark'] .markdown code:not([class*='language-']) {
+  color: var(--ifm-color-primary-lighter);
+  background: color-mix(in oklab, hsl(var(--primary)) 15%, transparent);
+}
+
+/* 6. Subtle Heading Anchors */
+.hash-link {
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  transform: translateX(-5px);
+  color: var(--muted-foreground) !important;
+}
+
+h2:hover .hash-link,
+h3:hover .hash-link,
+h4:hover .hash-link {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ==========================================================================
+   PURE CSS DOCS OVERHAUL (Massive Aesthetic Upgrade)
+   ========================================================================== */
+
+/* 7. Typography - Gradient Headers matching Landing Page */
+.theme-doc-markdown h1,
+.theme-doc-markdown h2,
+.theme-doc-markdown h3 {
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+
+.theme-doc-markdown h1 {
+  background: linear-gradient(to right, var(--foreground), hsl(var(--primary)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  padding-bottom: 0.2em;
+}
+
+.theme-doc-markdown h2 {
+  border-bottom: 1px solid color-mix(in oklab, var(--border) 50%, transparent);
+  padding-bottom: 0.5rem;
+  margin-top: 3rem;
+}
+
+/* 8. Premium Blockquotes */
+.theme-doc-markdown blockquote {
+  border-left: 4px solid hsl(var(--primary));
+  background: color-mix(in oklab, hsl(var(--primary)) 5%, transparent);
+  border-radius: 0 8px 8px 0;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+  color: var(--muted-foreground);
+  font-style: italic;
+  box-shadow: inset 0 2px 10px rgba(0,0,0,0.01);
+}
+
+[data-theme='dark'] .theme-doc-markdown blockquote {
+  background: color-mix(in oklab, hsl(var(--primary)) 10%, transparent);
+}
+
+/* 9. Premium Lists */
+.theme-doc-markdown ul,
+.theme-doc-markdown ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.theme-doc-markdown li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.theme-doc-markdown li::marker {
+  color: hsl(var(--primary));
+  font-weight: bold;
+}
+
+/* 10. Ambient Glow (Docs Background Wrapper) */
+.docs-wrapper, .ambient-glow-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+.docs-wrapper::before,
+.docs-wrapper::after,
+.ambient-glow-wrapper::before,
+.ambient-glow-wrapper::after {
+  content: '';
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.15;
+}
+
+.docs-wrapper::before, .ambient-glow-wrapper::before {
+  background: hsl(var(--primary));
+  top: -200px;
+  left: -200px;
+}
+
+.docs-wrapper::after, .ambient-glow-wrapper::after {
+  background: hsl(var(--primary));
+  bottom: 10%;
+  right: -300px;
+}
+
+[data-theme='light'] .docs-wrapper::before,
+[data-theme='light'] .docs-wrapper::after,
+[data-theme='light'] .ambient-glow-wrapper::before,
+[data-theme='light'] .ambient-glow-wrapper::after {
+  opacity: 0.05;
+}
+
+/* 11. Navbar Custom Logo Styling */
+.navbar__title {
+  font-family: 'Space Grotesk', 'Outfit', 'Inter', system-ui, sans-serif;
+  font-weight: 900;
+  font-size: 1.4rem;
+  letter-spacing: -0.05em;
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--foreground) !important;
+}
+
+.navbar__title::after {
+  content: 'Specification';
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+  margin-top: 2px;
+}
+
+/* 12. Center Navbar Items */
+@media (min-width: 997px) {
+  .navbar__inner {
+    position: relative;
+    justify-content: center;
+  }
+  .navbar__items:first-child {
+    justify-content: center;
+    flex: 1;
+  }
+  .navbar__brand {
+    position: absolute;
+    left: 1rem;
+  }
+  .navbar__items--right {
+    position: absolute;
+    right: 1rem;
+  }
+}
+
+/* 13. Global Glassmorphism for standard cards */
+.card {
+  background-color: color-mix(in oklab, var(--ifm-card-background-color) 40%, transparent) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid color-mix(in oklab, var(--ifm-color-emphasis-200) 50%, transparent) !important;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+}
+
+[data-theme='dark'] .card {
+  background-color: rgba(0, 0, 0, 0.2) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* 14. Premium Code Blocks */
+.theme-code-block {
+  border-radius: 12px !important;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid color-mix(in oklab, var(--ifm-color-emphasis-200) 50%, transparent) !important;
+  background-color: color-mix(in oklab, var(--ifm-background-color) 40%, transparent) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  overflow: hidden;
+}
+
+[data-theme='dark'] .theme-code-block {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  background-color: rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Force Prism to be transparent so the glassmorphic background shows through */
+.theme-code-block pre {
+  background-color: transparent !important;
+}
+
+/* Code block title bar */
+.theme-code-block > div:first-child {
+  border-bottom: 1px solid color-mix(in oklab, var(--ifm-color-emphasis-200) 30%, transparent) !important;
+  background-color: transparent !important;
+}
+
+[data-theme='dark'] .theme-code-block > div:first-child {
+  border-bottom-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* 15. Clean Focus States (Remove Red Borders) */
+.navbar__brand:focus,
+.navbar__brand:focus-visible,
+.navbar__item:focus,
+.navbar__item:focus-visible,
+.clean-btn:focus,
+.clean-btn:focus-visible,
+.menu__link:focus,
+.menu__link:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
 }
