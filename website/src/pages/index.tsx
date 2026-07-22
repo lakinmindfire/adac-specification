@@ -9,7 +9,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '../co
 import { ShineBorder } from '../components/ui/ShineBorder';
 import { ArrowRight, Copy, Terminal, Check, Server, ShieldCheck, Box, CheckCircle } from 'lucide-react';
 import { ArchitectureDiagramComponent } from '../components/ArchitectureDiagramComponent';
-import { ComparisonSliderComponent } from '../components/ComparisonSliderComponent';
+import { ComparisonComponent } from '../components/ComparisonComponent';
 import { ProblemSolutionComponent } from '../components/ProblemSolutionComponent';
 import { PersonasComponent } from '../components/PersonasComponent';
 
@@ -418,7 +418,7 @@ export default function Home() {
             </div>
           </section>
 
-          {/* Comparison Slider */}
+          {/* Comparison Section */}
           <section
             style={{
               paddingTop: '4rem',
@@ -448,7 +448,7 @@ export default function Home() {
                   See how ADAC simplifies your architecture workflow
                 </p>
               </header>
-              <ComparisonSliderComponent />
+              <ComparisonComponent />
             </div>
           </section>
 
